@@ -1,4 +1,4 @@
-def buildlist(key):
+def buildlist(key, base):
     table = "ABCDEFGHIJKLMNOPQRSTUVXYZ"
     tablel = []
     for letter in key:
@@ -28,11 +28,14 @@ def findletter(lettervar, tablel):
         pos = tablel.index(lettervar)
         newletter = tableb[pos]
     return newletter
-def translate(key, string):
-    table = buildlist(key)
+def translate(key, string, base):
+    table = buildlist(key, base)
     newstring = ""
     for letter in string:
-        letter = letter.replace("W", "VV") # ligne qui convertit "W" par "VV"
-        newstring += findletter(letter, table)
+        if letter in table:
+            letter = letter.replace("W", "VV") # ligne qui convertit "W" par "VV"
+            newstring += findletter(letter, table)
+        else:
+            newstring += letter
     return newstring
-print(translate("CLE", "TEXTE"))
+print(translate("CLE", "TEXTE", "ABCDEFGHIJKLMNOPQRSTUVXYZ"))
