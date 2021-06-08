@@ -1,5 +1,5 @@
 def buildlist(key, base):
-    table = "ABCDEFGHIJKLMNOPQRSTUVXYZ"
+    table = base
     tablel = []
     for letter in key:
         if letter in tablel:
